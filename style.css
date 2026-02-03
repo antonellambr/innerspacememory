@@ -181,51 +181,54 @@ header {
 }
 .card {
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 7rem;
     cursor: pointer !important;
-    background-image: url("img/card.png");
+    perspective: 1000px;
+}
+.card-inner {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    position: relative;
+}
+.card.flipped .card-inner {
+    transform: rotateY(180deg);
+}
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
 }
-.card.flipped[data-value="1"] {
-    background-image: url("img/card-1.png");
-    background-size: contain;
+.card-front {
+    background-image: url("img/card.png");
 }
-.card.flipped[data-value="2"] {
-    background-image: url("img/card-2.png");
-    background-size: contain;
+.card-back {
+    transform: rotateY(180deg);
 }
-.card.flipped[data-value="3"] {
-    background-image: url("img/card-3.png");
-    background-size: contain;
+.card[data-value="1"] .card-back { background-image: url("img/card-1.png"); }
+.card[data-value="2"] .card-back { background-image: url("img/card-2.png"); }
+.card[data-value="3"] .card-back { background-image: url("img/card-3.png"); }
+.card[data-value="4"] .card-back { background-image: url("img/card-4.png"); }
+.card[data-value="5"] .card-back { background-image: url("img/card-5.png"); }
+.card[data-value="6"] .card-back { background-image: url("img/card-6.png"); }
+.card[data-value="7"] .card-back { background-image: url("img/card-7.png"); }
+.card[data-value="8"] .card-back { background-image: url("img/card-8.png"); }
+.card[data-value="9"] .card-back { background-image: url("img/card-9.png"); }
+
+.card.wrong {
+    animation: shake 0.4s ease;
 }
-.card.flipped[data-value="4"] {
-    background-image: url("img/card-4.png");
-    background-size: contain;
-}
-.card.flipped[data-value="5"] {
-    background-image: url("img/card-5.png");
-    background-size: contain;
-}
-.card.flipped[data-value="6"] {
-    background-image: url("img/card-6.png");
-    background-size: contain;
-}
-.card.flipped[data-value="7"] {
-    background-image: url("img/card-7.png");
-    background-size: contain;
-}
-.card.flipped[data-value="8"] {
-    background-image: url("img/card-8.png");
-    background-size: contain;
-}
-.card.flipped[data-value="9"] {
-    background-image: url("img/card-9.png");
-    background-size: contain;
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-6px); }
+    40% { transform: translateX(6px); }
+    60% { transform: translateX(-4px); }
+    80% { transform: translateX(4px); }
 }
 
 #timer {
@@ -257,6 +260,20 @@ header {
         opacity: 0.5;
     }
 }
+#timer.timer-warning {
+    border-color: var(--card-1);
+    color: var(--card-1);
+    box-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
+    animation: timerPulse 0.5s ease-in-out infinite;
+}
+#timer.timer-warning::before {
+    color: var(--card-1);
+    animation: pulse 0.3s infinite;
+}
+@keyframes timerPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
 
 /*RESULT MODAL*/
 #result-modal {
@@ -270,6 +287,17 @@ header {
     text-align: center;
     z-index: 2000;
     box-shadow: 0 0 30px rgba(166, 108, 255, 0.5);
+    animation: modalIn 0.25s ease-out;
+}
+@keyframes modalIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
 }
 #result-title {
     font-size: 28px;
@@ -309,6 +337,7 @@ header {
     transform: translate(-50%, -50%);
     background: linear-gradient(rgba(11, 14, 26, 0.95), rgba(11, 14, 26, 0.95));
     border: 4px solid var(--card-5);
+    animation: modalIn 0.25s ease-out;
     padding: 40px 60px;
     text-align: center;
     z-index: 2000;

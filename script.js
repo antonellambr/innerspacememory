@@ -86,6 +86,19 @@ function renderCards(arr) {
         c.dataset.value = card;
         c.classList.add("card");
 
+        const inner = document.createElement("div");
+        inner.classList.add("card-inner");
+
+        const front = document.createElement("div");
+        front.classList.add("card-front");
+
+        const back = document.createElement("div");
+        back.classList.add("card-back");
+
+        inner.appendChild(front);
+        inner.appendChild(back);
+        c.appendChild(inner);
+
         c.addEventListener("click", () => {
             if (gameState.state === "inactive") {
                 return;
@@ -106,8 +119,12 @@ function renderCards(arr) {
                     setTimeout(() => checkWin(), 500);
                 } else {
                     setTimeout(() => {
-                        flippedCards[0].classList.remove("flipped");
-                        flippedCards[1].classList.remove("flipped");
+                        flippedCards[0].classList.add("wrong");
+                        flippedCards[1].classList.add("wrong");
+                    }, 300);
+                    setTimeout(() => {
+                        flippedCards[0].classList.remove("flipped", "wrong");
+                        flippedCards[1].classList.remove("flipped", "wrong");
                         flippedCards = [];
                     }, 1000);
                 }
@@ -134,9 +151,13 @@ function startTimer() {
     }
     let timeLeft = gameLevel[gameState.level].time;
     timer.textContent = timeLeft;
+    timer.classList.remove("timer-warning");
     timerId = setInterval(() => {
         timeLeft--;
         timer.textContent = timeLeft;
+        if (timeLeft <= 5) {
+            timer.classList.add("timer-warning");
+        }
         if (timeLeft === 0) {
             clearInterval(timerId);
             showResult(false);
@@ -198,6 +219,7 @@ btnProfile.addEventListener("click", () => {
 
 closeProfileBtn.addEventListener("click", () => {
     modalProfile.classList.add("hidden");
+    resultModal.classList.add("hidden");
     home.classList.remove("hidden");
 });
 
