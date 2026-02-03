@@ -174,6 +174,7 @@ function goHome() {
     clearInterval(timerId);
     game.querySelectorAll(".card").forEach(card => card.remove());
     gameState.state = "inactive";
+    level.textContent = "";
     updateView();
 }
 homeBtn.addEventListener("click", () => {

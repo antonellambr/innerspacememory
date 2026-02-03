@@ -60,6 +60,12 @@ header {
     width: 30px;
     cursor: pointer;
 }
+#level {
+    font-family: "Press Start 2P", system-ui;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: var(--accent);
+}
 
 .hidden {
     display: none !Important;
@@ -145,11 +151,12 @@ header {
 }
 
 #game {
-    max-height: calc(100vh - 65px);
+    height: calc(100vh - 65px);
     width: 50%;
     margin: 0 auto;
     display: grid;
     gap: 10px;
+    align-content: center;
 }
 #game.easy {
     grid-template-columns: repeat(3, 1fr);
@@ -395,7 +402,7 @@ header {
     .level-card[data-level="medium"] { box-shadow: 4px 4px 0px var(--card-3); }
     .level-card[data-level="hard"] { box-shadow: 4px 4px 0px var(--card-8); }
     #game {
-        max-height: calc(100vh - 50px);
+        height: calc(100vh - 50px);
     }
     #game.easy {
         width: 90%;
@@ -458,6 +465,9 @@ header {
     #home {
         height: calc(100vh - 45px);
         gap: 20px;
+    }
+    #game {
+        height: calc(100vh - 45px);
     }
     #levels {
         max-width: 60vw;
