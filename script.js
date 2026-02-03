@@ -220,6 +220,8 @@ btnProfile.addEventListener("click", () => {
 closeProfileBtn.addEventListener("click", () => {
     modalProfile.classList.add("hidden");
     resultModal.classList.add("hidden");
+    game.classList.add("hidden");
+    level.textContent = "";
     home.classList.remove("hidden");
 });
 
