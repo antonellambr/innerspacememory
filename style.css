@@ -146,20 +146,22 @@ header {
 
 #game {
     max-height: calc(100vh - 65px);
-    width: 70%;
+    width: 50%;
     margin: 0 auto;
     display: grid;
     gap: 10px;
 }
 #game.easy {
     grid-template-columns: repeat(3, 1fr);
+    width: 50%;
 }
 #game.medium {
     grid-template-columns: repeat(4, 1fr);
+    width: 60%;
 }
 #game.hard {
-    width: 80%;
     grid-template-columns: repeat(6, 1fr);
+    width: 70%;
 }
 #game.easy .card {
     height: 250px;
@@ -311,6 +313,7 @@ header {
     color: var(--accent);
 }
 #profile-modal p {
+    font-family: "Press Start 2P", system-ui;
     font-size: 14px;
     margin-bottom: 15px;
 }
@@ -325,4 +328,214 @@ header {
 }
 #profile-modal #close-profile:hover {
     background: rgba(69, 183, 209, 0.2);
+}
+
+/*RESPONSIVE*/
+@media (max-width: 1024px) {
+    .main-title {
+        font-size: 32px;
+    }
+    #home {
+        gap: 30px;
+    }
+    .level-card {
+        padding: 30px;
+        gap: 20px;
+    }
+    .level-card h2 {
+        font-size: 22px;
+    }
+    .level-card img {
+        width: 100px;
+        height: 100px;
+    }
+    #game.easy,
+    #game.medium {
+        width: 80%;
+    }
+    #game.hard {
+        width: 90%;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        height: 50px;
+        padding: 12px 20px;
+    }
+    #menu li img {
+        width: 24px;
+    }
+    .main-title {
+        font-size: 22px;
+    }
+    #home {
+        height: calc(100vh - 50px);
+        gap: 25px;
+    }
+    #levels {
+        max-width: 90vw;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    .level-card {
+        width: 100%;
+        padding: 20px;
+        gap: 12px;
+    }
+    .level-card h2 {
+        font-size: 18px;
+    }
+    .level-card img {
+        width: 100px;
+        height: 100px;
+    }
+    .level-card[data-level="easy"] { box-shadow: 4px 4px 0px var(--card-2); }
+    .level-card[data-level="medium"] { box-shadow: 4px 4px 0px var(--card-3); }
+    .level-card[data-level="hard"] { box-shadow: 4px 4px 0px var(--card-8); }
+    #game {
+        max-height: calc(100vh - 50px);
+    }
+    #game.easy {
+        width: 90%;
+        grid-template-columns: repeat(3, 1fr);
+    }
+    #game.easy .card {
+        height: 150px;
+    }
+    #game.medium {
+        width: 95%;
+        grid-template-columns: repeat(3, 1fr);
+    }
+    #game.medium .card {
+        height: 130px;
+    }
+    #game.hard {
+        width: 95%;
+        grid-template-columns: repeat(3, 1fr);
+    }
+    #game.hard .card {
+        height: 110px;
+    }
+    #timer {
+        font-size: 16px;
+        padding: 10px 15px;
+        bottom: 15px;
+        left: 15px;
+    }
+    #result-modal,
+    #profile-modal {
+        padding: 25px 30px;
+        width: 90vw;
+    }
+    #result-title,
+    #profile-modal h2 {
+        font-size: 20px;
+    }
+    #result-message {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+    #profile-modal p {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        height: 45px;
+        padding: 10px 15px;
+    }
+    #menu li img {
+        width: 20px;
+    }
+    .main-title {
+        font-size: 16px;
+        padding: 0 10px;
+        text-align: center;
+    }
+    #home {
+        height: calc(100vh - 45px);
+        gap: 20px;
+    }
+    #levels {
+        max-width: 60vw;
+        gap: 10px;
+    }
+    .level-card {
+        padding: 15px;
+        gap: 10px;
+        border-width: 3px;
+    }
+    .level-card h2 {
+        font-size: 14px;
+    }
+    .level-card img {
+        width: 100px;
+        height: 100px;
+    }
+    .level-card[data-level="easy"] { box-shadow: 3px 3px 0px var(--card-2); }
+    .level-card[data-level="medium"] { box-shadow: 3px 3px 0px var(--card-3); }
+    .level-card[data-level="hard"] { box-shadow: 3px 3px 0px var(--card-8); }
+    #game.easy {
+        width: 95%;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    #game.easy .card {
+        height: 140px;
+    }
+    #game.medium {
+        width: 95%;
+        grid-template-columns: repeat(3, 1fr);
+    }
+    #game.medium .card {
+        height: 100px;
+    }
+    #game.hard {
+        width: 95%;
+        grid-template-columns: repeat(3, 1fr);
+    }
+    #game.hard .card {
+        height: 80px;
+    }
+    #timer {
+        font-size: 14px;
+        padding: 8px 12px;
+        bottom: 10px;
+        left: 10px;
+        border-width: 3px;
+    }
+    #result-modal,
+    #profile-modal {
+        padding: 20px;
+        width: 92vw;
+        border-width: 3px;
+    }
+    #result-title,
+    #profile-modal h2 {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+    #result-message {
+        font-size: 12px;
+        margin-bottom: 15px;
+    }
+    #result-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+    #result-buttons button {
+        font-size: 10px;
+        padding: 12px 15px;
+    }
+    #profile-modal p {
+        font-size: 11px;
+        margin-bottom: 10px;
+    }
+    #profile-modal #close-profile {
+        font-size: 10px;
+        padding: 10px 20px;
+        margin-top: 15px;
+    }
 }
