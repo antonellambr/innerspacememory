@@ -1,121 +1,81 @@
 # Inner Space Memory
 
-Un gioco Memory interattivo con tema spaziale/neon, sviluppato in JavaScript vanilla come progetto portfolio.
+A space-themed memory card game built with vanilla JavaScript, HTML5 and CSS3.
 
-## Descrizione
+**[Play it live](https://antonellambr.github.io/innerspacememory/)**
 
-Inner Space Memory è un classico gioco di memoria dove il giocatore deve trovare tutte le coppie di carte nel minor tempo possibile. Il gioco offre tre livelli di difficoltà con un numero crescente di carte e tempo a disposizione.
+## About
 
-## Screenshot
+Inner Space Memory is a classic card matching game with a neon/space aesthetic. Players flip cards to find matching pairs before the timer runs out. The game features three difficulty levels, a stats tracker, and persistent data using localStorage.
 
-*Da aggiungere*
+## Features
 
-## Tecnologie
+- 3 difficulty levels (Easy, Medium, Hard)
+- Countdown timer per level
+- Win/lose result modal
+- Player stats (games played, wins, losses, average time)
+- Stats saved in localStorage across sessions
+- Responsive CSS Grid layout
 
-- HTML5
-- CSS3 (Custom Properties, Flexbox)
-- JavaScript ES6+
+## Tech Stack
 
-## Argomenti JavaScript Implementati
+- **HTML5** - Semantic structure
+- **CSS3** - Custom Properties, Grid, Flexbox, animations
+- **JavaScript ES6+** - No frameworks, no libraries
 
-Questo progetto dimostra la padronanza dei seguenti concetti:
+## JavaScript Concepts
 
-| Argomento | Stato | Dove viene usato |
-|-----------|-------|------------------|
-| `let` / `const` | ✅ | Tutto il progetto |
-| Arrow functions | ✅ | Event listeners, callbacks |
-| Parametri default | ⏳ | Da implementare |
-| Spread operator | ⏳ | Shuffle array |
-| Rest parameters | ⏳ | Da implementare |
-| Destructuring | ⏳ | Da implementare |
-| Scope e Closure | ⏳ | Timer, game logic |
-| `this` keyword | ⏳ | Da implementare |
-| Oggetti avanzati | ✅ | `gameState`, `gameLevel` |
-| Proprietà dinamiche | ✅ | `gameLevel[gameState.level]` |
-| Metodi shorthand | ⏳ | Da implementare |
-| Array methods (`map`, `filter`, `reduce`, etc.) | ⏳ | Statistiche, rendering |
-| DOM manipulation | ✅ | Selezione elementi, classi |
-| Creazione dinamica elementi | ⏳ | Render carte |
-| Classi dinamiche | ✅ | `classList.add/remove` |
+| Concept | Usage |
+|---------|-------|
+| `let` / `const` | Variable declarations throughout |
+| Arrow functions | Event listeners, callbacks |
+| Spread operator | Array shuffling (`[...arr]`) |
+| Destructuring | Stats extraction (`const { wins, losts } = getStats()`) |
+| Closures | Event listeners retaining outer scope variables |
+| Advanced objects | `gameState`, `gameLevel` configuration |
+| Dynamic properties | `gameLevel[gameState.level]` |
+| `filter` | Counting wins/losses from game history |
+| `reduce` | Calculating average time |
+| `sort` | Shuffling card array |
+| `forEach` | Iterating cards, DOM elements |
+| DOM manipulation | Dynamic card creation, classList, data-attributes |
+| `setInterval` / `clearInterval` | Game timer |
+| localStorage | Persisting game history with JSON.stringify/parse |
 
-## Struttura del Progetto
+## Game Levels
+
+| Level | Cards | Time |
+|-------|-------|------|
+| Easy | 6 | 20s |
+| Medium | 12 | 40s |
+| Hard | 18 | 60s |
+
+## Project Structure
 
 ```
 innerspacememory/
-├── index.html      # Struttura HTML
-├── style.css       # Stili e tema neon
-├── script.js       # Logica di gioco
-└── README.md       # Documentazione
+├── index.html
+├── style.css
+├── script.js
+├── img/
+│   ├── bg.png
+│   ├── card.png
+│   ├── card-1.png ... card-9.png
+│   ├── home.png
+│   ├── person.png
+│   ├── update.png
+│   ├── easy_no_bg.png
+│   ├── medium_no_bg.png
+│   └── hard_no_bg.png
+└── README.md
 ```
 
-## Livelli di Gioco
+## Run Locally
 
-| Livello | Carte | Tempo |
-|---------|-------|-------|
-| Easy    | 6     | 60s   |
-| Medium  | 12    | 100s  |
-| Hard    | 18    | 120s  |
+1. Clone the repository
+2. Open `index.html` in a browser
+3. Pick a level and play!
 
-## Stato di Avanzamento
-
-### Completato
-- [x] Struttura HTML base
-- [x] Sistema di navigazione (home/game)
-- [x] Selezione livello di difficoltà
-- [x] Oggetti di configurazione (`gameState`, `gameLevel`)
-- [x] Funzione `updateView()` per cambio vista
-- [x] Generazione array coppie di carte
-
-### In Corso
-- [ ] Shuffle delle carte (mescolare l'array)
-- [ ] Rendering carte nel DOM
-
-### Da Fare
-- [ ] Logica flip carta (girare al click)
-- [ ] Controllo match (verifica coppia)
-- [ ] Timer countdown
-- [ ] Sistema punteggio
-- [ ] Schermata vittoria/sconfitta
-- [ ] Modale profilo con statistiche
-- [ ] Salvataggio statistiche in localStorage
-- [ ] Animazioni CSS per flip carte
-
-## Come Eseguire
-
-1. Clona il repository
-2. Apri `index.html` nel browser
-3. Seleziona un livello e gioca!
-
-## Roadmap Tecnica
-
-### Step 1: Shuffle Array *(prossimo)*
-Implementare funzione per mescolare le carte usando spread operator e `.sort()`
-
-### Step 2: Render Carte
-Creare elementi DOM dinamicamente con `createElement` e template
-
-### Step 3: Flip Logic
-Gestire click sulle carte con event delegation e closure
-
-### Step 4: Match System
-Confrontare carte girate, gestire stati matched/unmatched
-
-### Step 5: Timer
-Implementare countdown con `setInterval` e closure
-
-### Step 6: Scoring
-Calcolare punteggio basato su tempo, errori, livello
-
-### Step 7: Statistics
-Usare `reduce`, `map`, `filter` per calcolare statistiche
-
-### Step 8: LocalStorage
-Persistere dati giocatore tra sessioni
-
-## Autore
-
-*Il tuo nome*
-
-## Licenza
+## License
 
 MIT
